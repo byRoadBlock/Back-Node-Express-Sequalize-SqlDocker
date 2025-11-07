@@ -7,8 +7,8 @@ const _serializeSingle = (tipocliente) => {
         'Estado': tipocliente.Estado,
         'CreacionFecha': tipocliente.CreacionFecha,
         'CreacionUsuario': tipocliente.CreacionUsuario,
-        'ModificacionFecha': tipocliente.ModificacionFecha,
-        'ModificacionUsuario': tipocliente.ModificacionUsuario,
+        'EdicionFecha': tipocliente.EdicionFecha,
+        'EdicionUsuario': tipocliente.EdicionUsuario,
     }
 }
 

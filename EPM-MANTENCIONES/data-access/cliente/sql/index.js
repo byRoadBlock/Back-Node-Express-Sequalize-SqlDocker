@@ -7,12 +7,13 @@ let getAll = async () => {
 }
 
 let find = async (prop, val) => {
-    if(prop == 'id') prop = '_id'
+    if(prop == 'IdCliente') prop = 'IdCliented'
     const resp = await repoCliente.findAll({where : { [prop]: val}})
     return clienteDto(resp[0])
 }
 
 let add = async (ClienteInfo) => {
+
     let cliente = modeloCliente(ClienteInfo)
 
     let newCliente = {
@@ -23,6 +24,7 @@ let add = async (ClienteInfo) => {
         EdicionFecha: cliente.getEdicionFecha(),
         EdicionUsuario: cliente.getEdicionUsuario(),
     }
+    
     return repoCliente.create(newCliente).then(clienteDto)
 }
 

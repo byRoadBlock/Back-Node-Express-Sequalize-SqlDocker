@@ -1,25 +1,30 @@
-let buildMakeCliente = function(validator) {
+let buildMakeCliente = function (validator) {
 	return function makeCliente({
 
 		//IdRegistro,
 		IdCliente,
 		Estado,
-		CreacionFecha,
+		// CreacionFecha,
 		CreacionUsuario,
-		EdicionFecha,
-		EdicionUsuario,
+		// EdicionFecha,
+		// EdicionUsuario,
 	} = {}) {
-		let {error} = validator({IdCliente,Estado,CreacionFecha,CreacionUsuario,EdicionFecha,EdicionUsuario,})
-		if (error) throw new Error(error)
+		// console.log(IdCliente, Estado, CreacionUsuario)
+		// let {error} = validator({IdCliente,Estado,CreacionUsuario})
+		// if (error) throw new Error(error)
+
+		const d = new Date();
+		const pad = n => String(n).padStart(2, '0');
+
 		return Object.freeze({
 			//getIdRegistro: () => IdRegistro,
 			getIdCliente: () => IdCliente,
 			getEstado: () => Estado,
-			getCreacionFecha: () => CreacionFecha,
+			getCreacionFecha: () => `${pad(d.getFullYear())}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`.toString(),
 			getCreacionUsuario: () => CreacionUsuario,
-			getEdicionFecha: () => EdicionFecha,
-			getEdicionUsuario: () => EdicionUsuario,
-		
+			getEdicionFecha: () => null,
+			getEdicionUsuario: () => null,
+
 		})
 	}
 }

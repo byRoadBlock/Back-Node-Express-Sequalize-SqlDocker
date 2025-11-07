@@ -22,8 +22,8 @@ let add = async (TipoClienteInfo) => {
         Estado: tipocliente.getEstado(),
         CreacionFecha: tipocliente.getCreacionFecha(),
         CreacionUsuario: tipocliente.getCreacionUsuario(),
-        ModificacionFecha: tipocliente.getModificacionFecha(),
-        ModificacionUsuario: tipocliente.getModificacionUsuario(),
+        EdicionFecha: tipocliente.getEdicionFecha(),
+        EdicionUsuario: tipocliente.getEdicionUsuario(),
     }
     return repoTipoCliente.create(newTipoCliente).then(tipoclienteDto)
 }
@@ -38,8 +38,8 @@ let update = async (id, TipoClienteInfo) => {
         Estado: tipocliente.getEstado(),
         CreacionFecha: tipocliente.getCreacionFecha(),
         CreacionUsuario: tipocliente.getCreacionUsuario(),
-        ModificacionFecha: tipocliente.getModificacionFecha(),
-        ModificacionUsuario: tipocliente.getModificacionUsuario(),
+        EdicionFecha: tipocliente.getEdicionFecha(),
+        EdicionUsuario: tipocliente.getEdicionUsuario(),
     }
     return repoTipoCliente.update(updateTipoCliente, {where: {id: id}}).then(() => find('id', id))
 }

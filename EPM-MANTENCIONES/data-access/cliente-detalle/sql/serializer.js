@@ -3,6 +3,7 @@ const _serializeSingle = (clientedetalle) => {
         'IdRegistro': clientedetalle.IdRegistro,
         'IdCliente': clientedetalle.IdCliente,
         'IdDetalle': clientedetalle.IdDetalle,
+        'IdEstado': clientedetalle.IdEstado,
         'IdTipo': clientedetalle.IdTipo,
         'Nombre': clientedetalle.Nombre,
         'Descripcion': clientedetalle.Descripcion,

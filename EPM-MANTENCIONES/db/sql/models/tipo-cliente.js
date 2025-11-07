@@ -32,11 +32,11 @@ const TipoCliente = sql.define('TipoCliente', {
 		type: DataTypes.STRING,
 		allowNull: false,
 	},
-	ModificacionFecha: {
+	EdicionFecha: {
 		type: DataTypes.DATE,
 		allowNull: true,
 	},
-	ModificacionUsuario: {
+	EdicionUsuario: {
 		type: DataTypes.STRING,
 		allowNull: true,
 	},

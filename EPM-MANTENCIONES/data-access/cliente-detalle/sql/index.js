@@ -1,23 +1,25 @@
-let repoClienteDetalle = require('../../../db/sql/models/cliente-detalle') 
-let modeloClienteDetalle = require('../../../models/cliente-detalle/index') 
-let clientedetalleDto = require('./serializer') 
+let repoClienteDetalle = require('../../../db/sql/models/cliente-detalle')
+let modeloClienteDetalle = require('../../../models/cliente-detalle/index')
+let clientedetalleDto = require('./serializer')
 
 let getAll = async () => {
     return repoClienteDetalle.findAll({}).then(clientedetalleDto)
 }
 
 let find = async (prop, val) => {
-    if(prop == 'id') prop = '_id'
-    const resp = await repoClienteDetalle.findAll({where : { [prop]: val}})
+    console.log(prop);
+    if (prop == 'IdClienteDetalle') prop = 'IdCliente'
+    const resp = await repoClienteDetalle.findAll({ where: { [prop]: val } })
     return clientedetalleDto(resp[0])
 }
 
 let add = async (ClienteDetalleInfo) => {
-    let clientedetalle = modeloClienteDetalle(ClienteDetalleInfo)
 
+    let clientedetalle = modeloClienteDetalle(ClienteDetalleInfo)
     let newClienteDetalle = {
         IdCliente: clientedetalle.getIdCliente(),
         IdDetalle: clientedetalle.getIdDetalle(),
+        IdEstado: clientedetalle.getIdEstado(),
         IdTipo: clientedetalle.getIdTipo(),
         Nombre: clientedetalle.getNombre(),
         Descripcion: clientedetalle.getDescripcion(),
@@ -27,6 +29,7 @@ let add = async (ClienteDetalleInfo) => {
         EdicionFecha: clientedetalle.getEdicionFecha(),
         EdicionUsuario: clientedetalle.getEdicionUsuario(),
     }
+    console.log('new',newClienteDetalle)
     return repoClienteDetalle.create(newClienteDetalle).then(clientedetalleDto)
 }
 
@@ -35,6 +38,7 @@ let update = async (id, ClienteDetalleInfo) => {
 
     let updateClienteDetalle = {
         IdCliente: clientedetalle.getIdCliente(),
+        IdEstado: clientedetalle.getIdEstado(),
         IdDetalle: clientedetalle.getIdDetalle(),
         IdTipo: clientedetalle.getIdTipo(),
         Nombre: clientedetalle.getNombre(),
@@ -45,11 +49,11 @@ let update = async (id, ClienteDetalleInfo) => {
         EdicionFecha: clientedetalle.getEdicionFecha(),
         EdicionUsuario: clientedetalle.getEdicionUsuario(),
     }
-    return repoClienteDetalle.update(updateClienteDetalle, {where: {id: id}}).then(() => find('id', id))
+    return repoClienteDetalle.update(updateClienteDetalle, { where: { id: id } }).then(() => find('id', id))
 }
 
 let remove = async (id) => {
-    return repoClienteDetalle.destroy({where: {id: id}})
+    return repoClienteDetalle.destroy({ where: { id: id } })
 }
 
 module.exports = {

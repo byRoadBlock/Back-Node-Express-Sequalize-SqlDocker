@@ -15,17 +15,21 @@ const ClienteDetalle = sql.define('ClienteDetalle', {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
+	IdEstado: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+	},
 	IdTipo: {
 		type: DataTypes.INTEGER,
 		allowNull: false,
 	},
 	Nombre: {
 		type: DataTypes.STRING,
-		allowNull: true,
+		allowNull: false,
 	},
 	Descripcion: {
 		type: DataTypes.STRING,
-		allowNull: false,
+		allowNull: true,
 	},
 	Estado: {
 		type: DataTypes.BOOLEAN,
